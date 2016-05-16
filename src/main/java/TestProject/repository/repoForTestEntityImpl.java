@@ -3,6 +3,8 @@ package TestProject.repository;
 import TestProject.domain.repoForTestEntity;
 import TestProject.domain.testEntity;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -36,6 +38,7 @@ public class repoForTestEntityImpl implements repoForTestEntity {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<testEntity> getAllTestEntity() {
         return sessionFactory.getCurrentSession()
                 .createCriteria(testEntity.class)
@@ -43,8 +46,11 @@ public class repoForTestEntityImpl implements repoForTestEntity {
     }
 
     @Override
-    public testEntity getByName(String name) {
-        sessionFactory.getCurrentSession().
+    public List<testEntity> getByName(String name) {
+        sessionFactory.getCurrentSession()
+                .createCriteria(testEntity.class)
+                .add(Restrictions.ilike("name", "%" + name + "%"))
+                .list();
         return null;
     }
 }

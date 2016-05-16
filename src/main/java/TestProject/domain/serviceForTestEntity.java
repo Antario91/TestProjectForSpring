@@ -9,6 +9,6 @@ public interface serviceForTestEntity {
     testEntity createEntity (int id, String name, int number);
     void deleteEntity(String name);
     testEntity getByID (int id);
-    testEntity getByNumber (int number);
+    testEntity getByName (String name);
     List<testEntity> getAll ();
 }

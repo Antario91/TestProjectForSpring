@@ -10,5 +10,5 @@ public interface repoForTestEntity {
     void delete (testEntity obj);
     testEntity getById (int id);
     List<testEntity> getAllTestEntity ();
-    testEntity getByName (String name);
+    List<testEntity> getByName (String name);
 }

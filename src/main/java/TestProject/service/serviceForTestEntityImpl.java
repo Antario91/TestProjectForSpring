@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -28,21 +29,39 @@ public class serviceForTestEntityImpl implements serviceForTestEntity {
 
     @Override
     public void deleteEntity(String name) {
-
+        List<testEntity> temp = RepoForTestEntity.getByName(name);
+        Iterator<testEntity> itr = temp.iterator();
+        testEntity tempEntity = null;
+        while (itr.hasNext()) {
+            tempEntity = itr.next();
+            if (tempEntity.getName().equalsIgnoreCase(name)){
+                break;
+            }
+        }
+        RepoForTestEntity.delete(tempEntity);
     }
 
     @Override
     public testEntity getByID(int id) {
-        return null;
+        return RepoForTestEntity.getById(id);
     }
 
     @Override
-    public testEntity getByNumber(int number) {
-        return null;
+    public testEntity getByName(String name) {
+        List<testEntity> temp = RepoForTestEntity.getByName(name);
+        Iterator<testEntity> itr = temp.iterator();
+        testEntity tempEntity = null;
+        while (itr.hasNext()) {
+            tempEntity = itr.next();
+            if (tempEntity.getName().equalsIgnoreCase(name)){
+                break;
+            }
+        }
+        return tempEntity;
     }
 
     @Override
     public List<testEntity> getAll() {
-        return null;
+        return RepoForTestEntity.getAllTestEntity();
     }
 }
