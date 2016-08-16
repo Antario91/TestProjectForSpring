@@ -1,0 +1,7 @@
+TestProject\domain\serviceForTestEntity.class
+TestProject\domain\repoForTestEntity.class
+TestProject\repository\repoForTestEntityImpl.class
+TestProject\App.class
+TestProject\domain\testEntity.class
+TestProject\config\springConfig.class
+TestProject\service\serviceForTestEntityImpl.class

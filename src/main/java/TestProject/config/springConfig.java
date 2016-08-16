@@ -16,7 +16,7 @@ import javax.sql.DataSource;
  * Created by Alexandr on 15.05.2016.
  */
 @Configuration
-@ComponentScan
+@ComponentScan(basePackages = {"TestProject.domain", "TestProject.repository","TestProject.service"})
 @EnableTransactionManagement
 public class springConfig {
     @Bean

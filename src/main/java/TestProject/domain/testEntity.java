@@ -20,11 +20,12 @@ public class testEntity {
     @Column(name = "NUMBER")
     private int number;
 
-    public testEntity(int id, String name, int number) {
-        this.id = id;
+    public testEntity(String name, int number) {
         this.name = name;
         this.number = number;
     }
+
+    public testEntity(){}
 
     public int getId() {
         return id;

@@ -22,7 +22,7 @@ public class repoForTestEntityImpl implements repoForTestEntity {
     @Override
     public void add(testEntity obj) {
         sessionFactory.getCurrentSession()
-                .save(obj);
+                .saveOrUpdate(obj);
     }
 
     @Override
@@ -47,10 +47,9 @@ public class repoForTestEntityImpl implements repoForTestEntity {
 
     @Override
     public List<testEntity> getByName(String name) {
-        sessionFactory.getCurrentSession()
+        return sessionFactory.getCurrentSession()
                 .createCriteria(testEntity.class)
                 .add(Restrictions.ilike("name", "%" + name + "%"))
                 .list();
-        return null;
     }
 }

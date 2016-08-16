@@ -4,6 +4,7 @@ import TestProject.domain.repoForTestEntity;
 import TestProject.domain.serviceForTestEntity;
 import TestProject.domain.testEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,8 +22,8 @@ public class serviceForTestEntityImpl implements serviceForTestEntity {
     private repoForTestEntity RepoForTestEntity;
 
     @Override
-    public testEntity createEntity(int id, String name, int number) {
-        testEntity entity = new testEntity(id, name, number);
+    public testEntity createEntity(String name, int number) {
+        testEntity entity = new testEntity(name, number);
         RepoForTestEntity.add(entity);
         return entity;
     }
