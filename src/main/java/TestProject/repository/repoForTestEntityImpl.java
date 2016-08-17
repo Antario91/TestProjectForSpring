@@ -52,4 +52,14 @@ public class repoForTestEntityImpl implements repoForTestEntity {
                 .add(Restrictions.ilike("name", "%" + name + "%"))
                 .list();
     }
+
+    @Override
+    public List<testEntity> getByDescription(String description) {
+        return sessionFactory.getCurrentSession()
+                .createCriteria(testEntity.class)
+                .add(Restrictions.ilike("description", /*"%" +*/ description /*+ "%"*/))
+                .list();
+    }
+
+
 }

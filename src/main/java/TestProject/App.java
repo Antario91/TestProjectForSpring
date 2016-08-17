@@ -4,10 +4,9 @@ package TestProject;
 import TestProject.config.springConfig;
 import TestProject.domain.serviceForTestEntity;
 import TestProject.domain.testEntity;
-import TestProject.service.serviceForTestEntityImpl;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Component;
 
 import java.util.Iterator;
 import java.util.List;
@@ -29,11 +28,11 @@ public class App
         }
 
         serviceForTestEntity service = (serviceForTestEntity)context1.getBean("serviceForTestEntityImpl");
-        service.createEntity("Alexandr",1);
-        service.createEntity("Alexey",2);
-        service.createEntity("Eugene",3);
+        service.createEntity("Alexandr",1,1991);
+        service.createEntity("Alexey",2,1983);
+        service.createEntity("Eugene",3,1990);
 
-        service.deleteEntity("Alexandr");
+//        service.deleteEntity("Alexandr");
 
         testEntity e = service.getByID(3);
         System.out.println(e);
@@ -49,5 +48,14 @@ public class App
             testEntity temp = itr.next();
             System.out.println(temp);
         }
+
+        System.out.println();
+        e = service.getByDescription("Alexandr%1%1991");
+        if (e == null){
+            System.out.println("Not found entity");
+        } else {
+            System.out.println(e);
+        }
+
     }
 }

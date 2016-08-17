@@ -22,8 +22,8 @@ public class serviceForTestEntityImpl implements serviceForTestEntity {
     private repoForTestEntity RepoForTestEntity;
 
     @Override
-    public testEntity createEntity(String name, int number) {
-        testEntity entity = new testEntity(name, number);
+    public testEntity createEntity(String name, int number, int year) {
+        testEntity entity = new testEntity(name, number, year);
         RepoForTestEntity.add(entity);
         return entity;
     }
@@ -57,6 +57,22 @@ public class serviceForTestEntityImpl implements serviceForTestEntity {
             if (tempEntity.getName().equalsIgnoreCase(name)){
                 break;
             }
+        }
+        return tempEntity;
+    }
+
+    @Override
+    public testEntity getByDescription(String description) {
+        List<testEntity> temp = RepoForTestEntity.getByDescription(description);
+        Iterator<testEntity> itr = temp.iterator();
+        testEntity tempEntity = null;
+        while (itr.hasNext()) {
+            tempEntity = itr.next();
+            if (!(tempEntity.getDescription().equalsIgnoreCase(description))){
+                break;
+            }
+
+            if (itr.hasNext()){tempEntity = null;}
         }
         return tempEntity;
     }

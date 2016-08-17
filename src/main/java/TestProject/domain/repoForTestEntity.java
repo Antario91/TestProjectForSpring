@@ -11,4 +11,5 @@ public interface repoForTestEntity {
     testEntity getById (int id);
     List<testEntity> getAllTestEntity ();
     List<testEntity> getByName (String name);
+    List<testEntity> getByDescription (String description);
 }

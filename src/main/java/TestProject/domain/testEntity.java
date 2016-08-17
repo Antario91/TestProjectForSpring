@@ -20,9 +20,17 @@ public class testEntity {
     @Column(name = "NUMBER")
     private int number;
 
-    public testEntity(String name, int number) {
+    @Column (name = "YEAR")
+    private int year;
+
+    @Column (name = "DESCRIPTION")
+    private String description;
+
+    public testEntity(String name, int number, int year) {
         this.name = name;
         this.number = number;
+        this.year = year;
+        this.description = name + " " + number + " " + year;
     }
 
     public testEntity(){}
@@ -35,8 +43,16 @@ public class testEntity {
         return name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public int getNumber(){
         return number;
+    }
+
+    public int getYear(){
+        return year;
     }
 
     public void setId(int id) {
@@ -51,12 +67,17 @@ public class testEntity {
         this.number = number;
     }
 
+    public void setYear(int year) {
+        this.year = year;
+    }
+
     @Override
     public String toString() {
         return "testEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", number=" + number +
+                ", year=" + year +
                 '}';
     }
 }
